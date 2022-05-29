@@ -3,24 +3,23 @@ package com.disney.service;
 import com.disney.model.Genre;
 import com.disney.repository.GenreRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 @Service
-public class genreServiceImpl implements genreService {
+public class GenreServiceImpl implements genreService {
 
 
     GenreRepository genreRepository;
 
-    public Genre mapToGenre(String genre, MultipartFile file) {
+    public Genre mapToGenre(String genre, String imgSrc) {
         Genre newGenre = new Genre();
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             newGenre = objectMapper.readValue(genre, Genre.class);
-            newGenre.setImagen(file.getOriginalFilename());
+            newGenre.setImagen(imgSrc);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -29,7 +28,9 @@ public class genreServiceImpl implements genreService {
 
     @Override
     public Genre save(Genre genre) {
-        return genreRepository.save(genre);
+
+        return genre;
+        //return genreRepository.save(genre);
     }
 
     @Override

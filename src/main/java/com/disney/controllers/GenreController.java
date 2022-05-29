@@ -16,7 +16,7 @@ import java.nio.file.Paths;
 
 @RestController
 @RequestMapping("api/genre")
-public class genreController {
+public class GenreController {
 
     @Autowired
     GenreServiceImpl genreService;
