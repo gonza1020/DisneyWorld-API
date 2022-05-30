@@ -4,12 +4,11 @@ import com.disney.model.Genre;
 import com.disney.repository.GenreRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
 @Service
-public class GenreServiceImpl implements genreService {
+public class GenreServiceImpl implements BaseService<Genre> {
 
 
     GenreRepository genreRepository;

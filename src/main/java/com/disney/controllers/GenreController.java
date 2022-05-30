@@ -22,7 +22,7 @@ public class GenreController {
     GenreServiceImpl genreService;
 
     @PostMapping(headers = "Content-Type= multipart/form-data")
-    public ResponseEntity<Genre> save(@RequestParam("genre") String genre, @RequestParam(value = "file") MultipartFile file) throws Exception {
+    public ResponseEntity<Genre> create(@RequestPart("genre") String genre, @RequestPart(value = "file") MultipartFile file) throws Exception {
 
         if (!file.isEmpty()) {
             Path dirImagenes = Paths.get("src/main/resources/static/images/genre");
