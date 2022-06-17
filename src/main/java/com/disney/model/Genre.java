@@ -8,7 +8,6 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "genre")
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Genre extends BaseEntity<Long> {
 
