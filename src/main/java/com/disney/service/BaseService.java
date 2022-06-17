@@ -13,6 +13,8 @@ public interface BaseService<T extends BaseEntity> {
 
     void delete(Long id);
 
+    T update(T entity , Long id);
+
     List<T> findAll();
 
 }
