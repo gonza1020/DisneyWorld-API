@@ -61,8 +61,7 @@ public class CharacterServiceImpl implements BaseService<Character> {
         if(character.getHistory() == null) return  true;
         if(character.getName() == null) return true;
         if(character.getWeight() == null) return true;
-        if(character.getBirthDate() == null) return true;
-        return  false;
+        return character.getBirthDate() == null;
     }
 
     public Character findByName(String name){

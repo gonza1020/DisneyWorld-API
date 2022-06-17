@@ -6,10 +6,7 @@ import com.disney.service.FilmServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -19,7 +16,7 @@ import java.nio.file.Paths;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/movie")
+@RequestMapping("api/movies")
 public class FilmController implements BaseController<Film,Long> {
 
     @Autowired
@@ -51,18 +48,25 @@ public class FilmController implements BaseController<Film,Long> {
     }
 
     @Override
-    public ResponseEntity<Film> findById(Long aLong) {
-        return null;
+    @GetMapping("{id}")
+    public ResponseEntity<Film> findById(@PathVariable Long id) {
+        return  new ResponseEntity<>(movieService.findById(id), HttpStatus.OK);
     }
 
     @Override
-    public void delete(Long aLong) {
-
+    @DeleteMapping("{id}")
+    public void delete( @PathVariable Long id) {
+        movieService.delete(id);
     }
 
     @Override
     @GetMapping()
     public List<Film> findAll() {
         return movieService.findAll();
+    }
+
+    @PutMapping("{id}")
+    public Film update(@PathVariable Long id, Film film) {
+        return movieService.update(film, id);
     }
 }
