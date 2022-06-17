@@ -88,6 +88,6 @@ public class FilmServiceImpl implements BaseService<Film> {
     @Override
     public List<Film> findAll() {
         return movieRepository.findAll();
-    }
+    }   //end of findAll()
 }
 
